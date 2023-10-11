@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <conio.h>
 using namespace std;
 
 // function prototypes
@@ -64,18 +65,22 @@ void draw()
     {
         for (int j = 0; j < width + 2; j++)
         {
+            // draw the left and right walls
             if (j == 0 || j == width + 2 - 1)
             {
                 cout << "#";
             } 
+            // draw the snake's head
             else if (i == y && j == x)
             {
                 cout << "O";
             }
+            // draw the fruit
             else if (i == fruitY && j == fruitX)
             {
                 cout << "F";
             }
+            // draw the empty space
             else
             {
                 cout << " ";
@@ -95,7 +100,32 @@ void draw()
 
 void input() 
 {
-
+    if (_kbhit())
+    {
+        switch (_getch())
+        {
+            // move left
+            case 'a':
+                dir = LEFT;
+                break;
+            // move right
+            case 'd':
+                dir: RIGHT;
+                break;
+            // move up
+            case 'w':
+                dir: UP;
+                break;
+            // move down
+            case 's':
+                dir = DOWN;
+                break;
+            // stop the game
+            case 'x':
+                gameOver = true;
+                break;
+        }
+    }
 }
 
 void logic() 

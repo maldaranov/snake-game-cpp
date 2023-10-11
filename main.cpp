@@ -26,7 +26,7 @@ eDirection dir;
 int main() 
 {
     setup();
-    while(!gameOver) 
+    while(!gameOver)
     {
         draw();
     }
@@ -46,7 +46,39 @@ void setup()
 
 void draw() 
 {
-    
+    // clear the console
+    system("clear");
+
+    // draw the top wall
+    for (int i = 0; i < width + 2; i++) 
+    {
+        cout << "#";
+    }
+    cout << endl;
+
+    // draw side walls
+    for (int i = 0; i < height; i++) 
+    {
+        for (int j = 0; j < width + 2; j++)
+        {
+            if (j == 0 || j == width + 2 - 1)
+            {
+                cout << "#";
+            } 
+            else 
+            {
+                cout << " ";
+            }
+        }
+        cout << endl;
+    }
+
+    // draw the bottom wall
+    for (int i = 0; i < width + 2; i++) 
+    {
+        cout << "#";
+    }
+    cout << endl;
 }
 
 void input() 

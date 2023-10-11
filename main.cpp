@@ -68,7 +68,15 @@ void draw()
             {
                 cout << "#";
             } 
-            else 
+            else if (i == y && j == x)
+            {
+                cout << "O";
+            }
+            else if (i == fruitY && j == fruitX)
+            {
+                cout << "F";
+            }
+            else
             {
                 cout << " ";
             }

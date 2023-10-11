@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 // function prototypes
@@ -6,6 +7,7 @@ void setup();
 void draw();
 void input();
 void logic();
+void ShowConsoleCursor(bool showFlag);
 
 // map dimensions
 const int width = 20;
@@ -35,6 +37,7 @@ int main()
 
 void setup() 
 {
+    ShowConsoleCursor(false);
     gameOver = false;
     dir = STOP;
     x = width / 2;
@@ -89,4 +92,15 @@ void input()
 void logic() 
 {
 
+}
+
+void ShowConsoleCursor(bool showFlag)
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO     cursorInfo;
+
+    GetConsoleCursorInfo(out, &cursorInfo);
+    cursorInfo.bVisible = showFlag; // set the cursor visibility
+    SetConsoleCursorInfo(out, &cursorInfo);
 }

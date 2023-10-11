@@ -33,6 +33,7 @@ int main()
     {
         draw();
     }
+    ShowConsoleCursor(true);
     return 0;
 }
 
@@ -110,11 +111,11 @@ void input()
                 break;
             // move right
             case 'd':
-                dir: RIGHT;
+                dir = RIGHT;
                 break;
             // move up
             case 'w':
-                dir: UP;
+                dir = UP;
                 break;
             // move down
             case 's':

@@ -82,6 +82,7 @@ void draw()
         cout << "#";
     }
     cout << endl;
+    Sleep(33.34);
 }
 
 void input() 

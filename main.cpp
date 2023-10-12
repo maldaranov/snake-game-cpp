@@ -32,14 +32,14 @@ int main()
     while(!gameOver)
     {
         draw();
+        input();
+        logic();
     }
-    ShowConsoleCursor(true);
     return 0;
 }
 
 void setup() 
 {
-    ShowConsoleCursor(false);
     gameOver = false;
     dir = STOP;
     x = width / 2;
@@ -51,6 +51,8 @@ void setup()
 
 void draw() 
 {
+    // hide the console cursor
+    ShowConsoleCursor(false);
     // clear the console
     system("clear");
 
@@ -97,6 +99,7 @@ void draw()
     }
     cout << endl;
     Sleep(33.34);
+    ShowConsoleCursor(true);
 }
 
 void input() 
@@ -131,7 +134,23 @@ void input()
 
 void logic() 
 {
-
+    switch (dir)
+    {
+        case LEFT:
+            x--;
+            break;
+        case RIGHT:
+            x++;
+            break;
+        case UP:
+            y--;
+            break;
+        case DOWN:
+            y++;
+            break;
+        default:
+            break;
+    }
 }
 
 void ShowConsoleCursor(bool showFlag)

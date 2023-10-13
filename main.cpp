@@ -134,6 +134,7 @@ void input()
 
 void logic() 
 {
+    // changes coordinates according to the direction
     switch (dir)
     {
         case LEFT:
@@ -150,6 +151,11 @@ void logic()
             break;
         default:
             break;
+    }
+    // terminate the game is the snake's head is out of bounds
+    if (x > width || x < 0 || y > height || y < 0)
+    {
+        gameOver = true;
     }
 }
 

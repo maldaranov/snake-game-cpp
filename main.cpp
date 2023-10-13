@@ -18,7 +18,9 @@ const int height = 20;
 int x, y;
 enum eDirection {STOP = 0, LEFT, RIGHT, UP, DOWN};
 
-// snake's tail coordinates
+// snake's tail coordinates and length
+int tailX[100], tailY[100];
+int nTail;
 
 // fruit position
 int fruitX, fruitY;
@@ -61,7 +63,7 @@ void draw()
     // hide the console cursor
     ShowConsoleCursor(false);
     // clear the console
-    system("clear");
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
 
     // draw the top wall
     for (int i = 0; i < width + 2; i++) 
@@ -93,13 +95,17 @@ void draw()
             // draw the empty space
             else
             {
+                for (int k = 0; k < nTail; k++)
+                {
+                    if (tailX[k] == j && tailY[k] == i)
+                    {
+                        cout << "o";
+                    }
+                }
                 cout << " ";
             }
         }
         cout << endl;
-
-        // print the current score
-        cout << "Score: " << score << endl;
     }
 
     // draw the bottom wall
@@ -108,6 +114,8 @@ void draw()
         cout << "#";
     }
     cout << endl;
+    // print the current score
+    cout << "Score: " << score << endl;
     Sleep(33.34);
     ShowConsoleCursor(true);
 }
@@ -144,6 +152,22 @@ void input()
 
 void logic() 
 {
+    // remember the previous coordinates of the tail
+    int prevX = tailX[0];
+    int prevY = tailY[0];
+    int prev2X, prev2Y;
+
+    // move the tail
+    for (int i = 1; i < nTail; i++)
+    {
+        prev2X = tailX[i];
+        prev2Y = tailY[i];
+        tailX[i] = prevX;
+        tailY[i] = prevY;
+        prevX = prev2X;
+        prevY = prev2Y;
+    }
+
     // changes coordinates according to the direction
     switch (dir)
     {
@@ -172,7 +196,8 @@ void logic()
     // if fruit is eaten
     if (x == fruitX && y == fruitY)
     {
-        // increase the score
+        // increase the tail length and the score
+        nTail++;
         score += 10;
 
         // randomly position the fruit on the map

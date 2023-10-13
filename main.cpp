@@ -116,7 +116,7 @@ void draw()
     cout << endl;
     // print the current score
     cout << "Score: " << score << endl;
-    Sleep(33.34);
+    Sleep(100);
     ShowConsoleCursor(true);
 }
 

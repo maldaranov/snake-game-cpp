@@ -95,14 +95,19 @@ void draw()
             // draw the empty space
             else
             {
+                bool print = false;
                 for (int k = 0; k < nTail; k++)
                 {
                     if (tailX[k] == j && tailY[k] == i)
                     {
                         cout << "o";
+                        print = true;
                     }
                 }
-                cout << " ";
+                if (!print)
+                {
+                    cout << " ";
+                }
             }
         }
         cout << endl;
@@ -156,7 +161,8 @@ void logic()
     int prevX = tailX[0];
     int prevY = tailY[0];
     int prev2X, prev2Y;
-
+    tailX[0] = x;
+    tailY[0] = y;
     // move the tail
     for (int i = 1; i < nTail; i++)
     {

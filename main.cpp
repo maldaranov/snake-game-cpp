@@ -14,8 +14,11 @@ void ShowConsoleCursor(bool showFlag);
 const int width = 20;
 const int height = 20;
 
-// object coordinates and directions
+// snake's head coordinates and directions
 int x, y;
+enum eDirection {STOP = 0, LEFT, RIGHT, UP, DOWN};
+
+// snake's tail coordinates
 
 // fruit position
 int fruitX, fruitY;
@@ -23,7 +26,6 @@ int fruitX, fruitY;
 // other
 bool gameOver;
 int score;
-enum eDirection {STOP = 0, LEFT, RIGHT, UP, DOWN};
 eDirection dir;
 
 int main() 
@@ -95,6 +97,9 @@ void draw()
             }
         }
         cout << endl;
+
+        // print the current score
+        cout << "Score: " << score << endl;
     }
 
     // draw the bottom wall

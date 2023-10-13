@@ -97,8 +97,10 @@ void draw()
             }
             // draw the empty space
             else
-            {
+            {   
+                // boolean to check if the tail piece was printed or not to avoid printing extra empty spaces
                 bool print = false;
+                // check if there is a tail piece at the current coordinates
                 for (int k = 0; k < nTail; k++)
                 {
                     if (tailX[k] == j && tailY[k] == i)
@@ -122,9 +124,12 @@ void draw()
         cout << "#";
     }
     cout << endl;
+    
     // print the current score
     cout << "Score: " << score << endl;
     Sleep(100);
+
+    // show the console cursor for future console input after the game has completed running
     ShowConsoleCursor(true);
 }
 

@@ -199,6 +199,15 @@ void logic()
         gameOver = true;
     }
 
+    // terminate the game is snake's head hits the tail
+    for (int i = 0; i < nTail; i++)
+    {
+        if (tailX[i] == x && tailY[i] == y)
+        {
+            gameOver = true;
+        }
+    }
+
     // if fruit is eaten
     if (x == fruitX && y == fruitY)
     {

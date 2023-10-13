@@ -44,6 +44,9 @@ int main()
 
 void setup() 
 {
+    // clear the console
+    system("clear");
+
     // initial settings
     gameOver = false;
     dir = STOP;

@@ -65,6 +65,7 @@ void draw()
 {
     // hide the console cursor
     ShowConsoleCursor(false);
+
     // clear the console
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
 
@@ -124,9 +125,9 @@ void draw()
         cout << "#";
     }
     cout << endl;
-    
+
     // print the current score
-    cout << "Score: " << score << endl;
+    cout << "score: " << score << endl;
     Sleep(100);
 
     // show the console cursor for future console input after the game has completed running
@@ -202,7 +203,7 @@ void logic()
     }
 
     // terminate the game is the snake's head is out of map's bounds
-    if (x > width || x < 0 || y > height || y < 0)
+    if (x > width || x <= 0 || y >= height || y < 0)
     {
         gameOver = true;
     }

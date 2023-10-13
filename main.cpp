@@ -40,13 +40,18 @@ int main()
 
 void setup() 
 {
+    // initial settings
     gameOver = false;
     dir = STOP;
+    score = 0;
+
+    // position the snake at the center of the map
     x = width / 2;
     y = height / 2;
+
+    // randomly position the fruit on the map
     fruitX = rand() % width;
     fruitY = rand() % height;
-    score = 0;
 }
 
 void draw() 
@@ -152,19 +157,29 @@ void logic()
         default:
             break;
     }
-    // terminate the game is the snake's head is out of bounds
+
+    // terminate the game is the snake's head is out of map's bounds
     if (x > width || x < 0 || y > height || y < 0)
     {
         gameOver = true;
+    }
+
+    // if fruit is eaten
+    if (x == fruitX && y == fruitY)
+    {
+        // increase the score
+        score += 10;
+
+        // randomly position the fruit on the map
+        fruitX = rand() % width;
+        fruitY = rand() % height;
     }
 }
 
 void ShowConsoleCursor(bool showFlag)
 {
     HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
-
     CONSOLE_CURSOR_INFO     cursorInfo;
-
     GetConsoleCursorInfo(out, &cursorInfo);
     cursorInfo.bVisible = showFlag; // set the cursor visibility
     SetConsoleCursorInfo(out, &cursorInfo);
